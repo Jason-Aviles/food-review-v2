@@ -24,7 +24,7 @@ const AuthNav = (props) => {
            </a></Link>
            
            
-           <Link  onClick={()=> {localStorage.removeItem('token') ;localStorage.getItem('user');props.history.push('/')} } to='/logout'  >    <a class="item">
+           <Link  onClick={()=> {localStorage.removeItem('token') ;localStorage.getItem('id');props.history.push('/')} } to='/logout'  >    <a class="item">
              <i aria-hidden="true" class="meh outline icon"></i>
             Logout
            </a></Link> 
