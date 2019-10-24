@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import axiosWithAuth from "../common/axosWithAuth";
+
+import Zoom from 'react-reveal/Zoom';
+import Fade from 'react-reveal/Fade';
+import Bounce from 'react-reveal/Bounce';
+
 class Other extends Component {
   state = {
 
@@ -38,7 +43,7 @@ this.menu_item(this.state)
             alignItems: "center",
             lineHeight: "40px",
             
-          }}><h1 style={{fontFamily:" 'Righteous', cursive",color:'#D86E20',fontSize:'2rem'}}>Adding New Review </h1>
+          }}><Zoom right cascade delay={800}> <h1 style={{fontFamily:" 'Righteous', cursive",color:'#D86E20',fontSize:'2rem'}}>Adding New Review </h1></Zoom>
       <label>
        write your review: </label> <textarea
           name="comments"
@@ -72,10 +77,14 @@ this.menu_item(this.state)
     border:" none",
     borderBottom: "solid black 1px"}}
         />
+
+<Fade cascade delay={800} duration={4000}>
         <button className='plus icon"' style={{background:'#E2B045' ,outline:'none',border:'none',padding:'5px 15px',
     marginTop: "10px"}}>next</button>
+    </Fade>
+
       </form>
-      
+      <Bounce cascade delay={800} duration={2000}>
       
       <div style={{ width: "40%" }}>
           <img
@@ -86,7 +95,7 @@ this.menu_item(this.state)
           />
         </div>
       
-      
+      </Bounce>
       
       </div>
     );

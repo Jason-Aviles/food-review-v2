@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import axiosWithAuth from "../common/axosWithAuth";
+import Zoom from 'react-reveal/Zoom';
+import Fade from 'react-reveal/Fade';
+import Bounce from 'react-reveal/Bounce';
 class Menu_item_review extends Component {
   state = {
     restaurant_name: "",
@@ -42,7 +45,9 @@ class Menu_item_review extends Component {
             lineHeight: "40px",
             
           }}
-        ><h1 style={{fontFamily:" 'Righteous', cursive",color:'#D86E20',fontSize:'2rem'}}>Adding New Review </h1>
+        >   <Zoom right cascade delay={800}><h1 style={{fontFamily:" 'Righteous', cursive",color:'#D86E20',fontSize:'2rem'}}>Adding New Review </h1></Zoom>
+
+
           name:{" "}
           <input
             name="restaurant_name"
@@ -76,10 +81,12 @@ class Menu_item_review extends Component {
             <option value=" Pop-Up Restaurant"> Pop-Up Restaurant</option>
             <option value=" Ghost Restaurant"> Ghost Restaurant</option>
           </select>
+          <Fade cascade delay={800} duration={4000}>
           <button className='plus icon"' style={{background:'#E2B045' ,outline:'none',border:'none',padding:'5px 15px',
-    marginTop: "10px"}}>next</button>
+    marginTop: "10px"}}>next</button></Fade>
+    
         </form>
-
+        <Bounce cascade delay={800} duration={2000}>
         <div style={{ width: "40%" }}>
           <img
             style={{ width: "80%", borderRadius: "50%"  ,   marginTop: "25%"
@@ -87,7 +94,7 @@ class Menu_item_review extends Component {
             alt="food"
             src="http://www.transparentpng.com/thumb/food/AlL8lQ-hamburger-potato-chips-food-free-download.png"
           />
-        </div>
+        </div></Bounce>
       </div>
     );
   }

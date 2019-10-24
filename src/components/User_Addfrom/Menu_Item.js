@@ -1,5 +1,10 @@
 import React, { Component } from "react";
 import axiosWithAuth from "../common/axosWithAuth";
+import Zoom from 'react-reveal/Zoom';
+import Fade from 'react-reveal/Fade';
+import Bounce from 'react-reveal/Bounce';
+
+
 class Menu_Item extends Component {
   state = {
     item_name: "",
@@ -37,7 +42,14 @@ class Menu_Item extends Component {
             lineHeight: "40px",
             
           }}
-      ><h1 style={{fontFamily:" 'Righteous', cursive",color:'#D86E20',fontSize:'2rem'}}>Adding New Review </h1>
+      >
+       <Zoom right cascade delay={800}>
+      
+      <h1 style={{fontFamily:" 'Righteous', cursive",color:'#D86E20',fontSize:'2rem'}}>Adding New Review </h1>
+</Zoom>
+
+
+     
        Product Name: <input
           name="item_name"
           value={this.state.item_name}
@@ -69,10 +81,15 @@ class Menu_Item extends Component {
           <option value="4">4</option>
           <option value="5">5</option>
         </select>
+
+        <Fade cascade delay={800} duration={4000}>
         <button className='plus icon"' style={{background:'#E2B045' ,outline:'none',border:'none',padding:'5px 15px',
     marginTop: "10px"}}>next</button>
+   
+</Fade>
+
       </form>
-      
+      <Bounce cascade delay={800} duration={2000}>
       <div style={{ width: "40%" }}>
           <img
             style={{ width: "80%", borderRadius: "50%"  ,   marginTop: "25%"
@@ -81,7 +98,7 @@ class Menu_Item extends Component {
             src="https://clipartstation.com/wp-content/uploads/2018/09/fast-food-clipart-png-2.jpg"
           />
         </div>
-      
+       </Bounce>
       
       </div>
     );

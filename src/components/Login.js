@@ -21,7 +21,7 @@ z
     this.login(this.state);
     // this.props.history.replace('/test')
     // this.props.history.push('/test')
-     setTimeout(function(){    window.location.reload()  }, 2000);
+    // setTimeout(function(){    window.location.reload()  }, 2500);
 
   };
 
@@ -42,7 +42,7 @@ z
           value={this.state.password}
           onChange={this.handleChange}
         ></input>
-        <button style={{background:'#E2B045' ,outline:'none',border:'none',padding:'5px 10px'}}>send</button>
+        <button style={{background:'#E2B045' ,outline:'none',border:'none',padding:'5px 10px',cursor:'pointer'}}>send</button>
       </form>   <div  style={{width:"40%"}}>
 
 <img style={{width:"80%", borderRadius:'50%' ,marginTop:"30%"}} alt='food' src="https://img.pngio.com/unhealthy-food-for-kids-png-free-unhealthy-food-for-kidspng-unhealthy-food-png-980_600.png"/>

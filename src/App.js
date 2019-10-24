@@ -84,7 +84,7 @@ function App(props) {
     margin: "auto",
     flexDirection: "row",
     marginLeft: "79%"}}>
-            <i style={{fontSize: ".5em"}}class="user icon"></i>
+            <i style={{fontSize: ".5em",color:"#3ee23e"}}class="user icon"></i>
             <span style={{ color: "black", fontSize: ".8rem" }}>
               {username}
             </span>

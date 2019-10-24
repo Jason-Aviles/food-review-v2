@@ -1,35 +1,34 @@
 import React from "react";
-import { Header, Icon, Image, Menu, Segment, Sidebar } from "semantic-ui-react";
-import {Link} from 'react-router-dom'
-import { white } from "ansi-colors";
+
+import Fade from 'react-reveal/Fade';
 const Homepage = (props) => {
   return (
     <div>
       <div class="ui segment pushable">
      
         <div class="pusher">
-          <div style={{marginLeft:"150px"}} class="ui basic segment">
+          <div style={{marginLeft:"150px",zIndex:-1}} class="ui basic segment">
             
-              <div
+          <Fade cascade delay={1000} duration={2000}>     <div
                 class="ui inverted vertical center aligned segment"
                 style={{ minHeight: " 700px", padding: " 1em 0em",backgroundColor: "rgba(236, 226, 212, 0.18)",}}
               >
              
                 <div class="ui text container" style={{backgroundColor:'red',padding:"10px",transparent:.3,    borderRadius: '10px',
     background: "url(https://i.pinimg.com/originals/f0/b6/15/f0b615f78dd809d68ec389f4bc8d94bb.jpg) center center no-repeat "}}>
-                  <h1
+            <Fade cascade delay={1500} duration={2500}>           <h1
                     class="ui inverted header"
-                    style={{color:'white',fontize: "4em" ,fontWeight: "bold", marginBottom: "0px ",marginTop: "3em",letterSpacing:'4px',backgroundColor: "rgba(0, 0, 0, 0.18);",fontSize: "2.5rem",fontFamily:" 'Righteous', cursive",}}
+                    style={{color:'black',fontize: "4em" ,fontWeight: "bold", marginBottom: "0px ",marginTop: "3em",letterSpacing:'4px',background: "#f5f5f57d",fontSize: "2.5rem",fontFamily:" 'Righteous', cursive",}}
                   >
                    Food Review
-                  </h1>
-                  <h2
+                  </h1></Fade>
+                  <Fade bottom cascade delay={700} duration={1200}> <h2
                     class="ui inverted header"
                     style={{fontSize: "1.7em", fontWeight: "normal", marginTop: "1.5em",    background:" #ec7d0e9c",color:"white",
     borderRadius: "21px"}}
                   >
                    Review whatever you want when you want to.
-                  </h2>
+                  </h2></Fade>
                   {/* <button class="ui huge primary button"  style={{background:'#E2B045'}}>
                     Get Started
                     <i aria-hidden="true" class="right arrow icon"></i>
@@ -71,7 +70,7 @@ const Homepage = (props) => {
                 utamur at. Quodsi convenire mnesarchum eu per, quas minimum
                 postulant per id.
               </p> */}
-          </div>
+          </div>  </Fade> 
           </div>
         </div>
       </div>
