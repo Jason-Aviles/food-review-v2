@@ -15,12 +15,12 @@ const AuthNav = (props) => {
        <Link to='/add_review'>     <a class="item">
              <i aria-hidden="true" class="plus square outline icon
  "></i>
-        ADD REVIEW   
+        Add review   
            </a></Link> 
            <Link to='/test'>   <a class="item">
              <i aria-hidden="true" class="eye icon
  "></i>
-            MY REVIEW 
+            My review
            </a></Link>
            
            

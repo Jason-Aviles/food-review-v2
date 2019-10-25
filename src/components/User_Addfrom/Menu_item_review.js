@@ -1,24 +1,24 @@
 import React, { Component } from "react";
 import axiosWithAuth from "../common/axosWithAuth";
-import Zoom from 'react-reveal/Zoom';
-import Fade from 'react-reveal/Fade';
-import Bounce from 'react-reveal/Bounce';
+import Zoom from "react-reveal/Zoom";
+import Fade from "react-reveal/Fade";
+import Bounce from "react-reveal/Bounce";
 class Menu_item_review extends Component {
   state = {
     restaurant_name: "",
     restaurant_type: "",
-    user_id: Number(localStorage.getItem("id")),
-  //  menu_id: Number(localStorage.getItem("id")),
- //   created_at: ""
+    user_id: Number(localStorage.getItem("id"))
+    //  menu_id: Number(localStorage.getItem("id")),
+    //   created_at: ""
   };
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
   reviews = body => {
-  return  axiosWithAuth()
+    return axiosWithAuth()
       .post("https://foodappapisql.herokuapp.com/auth/api", body)
-      .then(res => console.log("res" , res))
+      .then(res => console.log("res", res))
       .catch(err => console.log(err.message));
   };
 
@@ -30,10 +30,9 @@ class Menu_item_review extends Component {
   };
 
   render() {
-    console.log( this.state.restaurant_type,'here')
+    console.log(this.state.restaurant_type, "here");
     return (
       <div style={{ display: "flex", flexDirection: "row" }}>
-      
         <form
           onSubmit={this.handleSubmit}
           style={{
@@ -42,30 +41,46 @@ class Menu_item_review extends Component {
             marginTop: "15%",
             flexDirection: "column",
             alignItems: "center",
-            lineHeight: "40px",
-            
+            lineHeight: "40px"
           }}
-        >   <Zoom right cascade delay={800}><h1 style={{fontFamily:" 'Righteous', cursive",color:'#D86E20',fontSize:'2rem'}}>Adding New Review </h1></Zoom>
-
-
+        >
+          {" "}
+          <Zoom right cascade delay={800}>
+            <h1
+              style={{
+                fontFamily: " 'Righteous', cursive",
+                color: "#D86E20",
+                fontSize: "2rem"
+              }}
+            >
+              Adding New Review{" "}
+            </h1>
+          </Zoom>
           name:{" "}
           <input
             name="restaurant_name"
             value={this.state.restaurant_name}
             onChange={this.handleChange}
-
-            style={{marginBottom:'10px',padding: "5px 10px",
-    border:" none",
-    borderBottom: "solid black 1px"}}
+            style={{
+              marginBottom: "10px",
+              padding: "5px 10px",
+              border: " none",
+              borderBottom: "solid black 1px"
+            }}
           />
           type:{" "}
           <select
             name="restaurant_type"
             value={this.state.restaurant_type}
             onChange={this.handleChange}
-            style={{marginBottom:'10px',    width:" 30%",    border: "none",
-    borderBottom:" solid 1px black"}}
+            style={{
+              marginBottom: "10px",
+              width: " 30%",
+              border: "none",
+              borderBottom: " solid 1px black"
+            }}
           >
+            <option> Selected One</option>
             <option value=" Fine Dining"> Fine Dining</option>
             <option value=" Casual Dining"> Casual Dining</option>
             <option value=" Contemporary Casual"> Contemporary Casual</option>
@@ -82,19 +97,29 @@ class Menu_item_review extends Component {
             <option value=" Ghost Restaurant"> Ghost Restaurant</option>
           </select>
           <Fade cascade delay={800} duration={4000}>
-          <button className='plus icon"' style={{background:'#E2B045' ,outline:'none',border:'none',padding:'5px 15px',
-    marginTop: "10px"}}>next</button></Fade>
-    
+            <button
+              className='plus icon"'
+              style={{
+                background: "#E2B045",
+                outline: "none",
+                border: "none",
+                padding: "5px 15px",
+                marginTop: "10px"
+              }}
+            >
+              next
+            </button>
+          </Fade>
         </form>
         <Bounce cascade delay={800} duration={2000}>
-        <div style={{ width: "40%" }}>
-          <img
-            style={{ width: "80%", borderRadius: "50%"  ,   marginTop: "25%"
- }}
-            alt="food"
-            src="http://www.transparentpng.com/thumb/food/AlL8lQ-hamburger-potato-chips-food-free-download.png"
-          />
-        </div></Bounce>
+          <div style={{ width: "40%" }}>
+            <img
+              style={{ width: "80%", borderRadius: "50%", marginTop: "25%" }}
+              alt="food"
+              src="http://www.transparentpng.com/thumb/food/AlL8lQ-hamburger-potato-chips-food-free-download.png"
+            />
+          </div>
+        </Bounce>
       </div>
     );
   }
