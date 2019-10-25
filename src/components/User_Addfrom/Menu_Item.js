@@ -59,7 +59,7 @@ class Menu_Item extends Component {
     borderBottom: "solid black 1px"}}
         />
        Picture: <input
-       type='file'
+      
           name="photo_of_order"
           value={this.state.photo_of_order}
           onChange={this.handleChange}
