@@ -29,7 +29,8 @@ class Other extends Component {
 e.preventDefault()
 
 this.menu_item(this.state)
-//this.props.history.push('/')
+this.props.history.push('/test')
+setTimeout(function(){    window.location.reload()  }, 2100);
   }
 
   render() {
