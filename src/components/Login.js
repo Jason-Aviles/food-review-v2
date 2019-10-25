@@ -21,7 +21,7 @@ z
     this.login(this.state);
     // this.props.history.replace('/test')
     // this.props.history.push('/test')
-     setTimeout(function(){    window.location.reload()  }, 1800);
+     setTimeout(function(){    window.location.reload()  }, 2000);
 
   };
 
