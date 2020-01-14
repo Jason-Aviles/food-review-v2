@@ -17,11 +17,11 @@ import Test1 from "./components/test/Test-1";
 import Test2 from "./components/test/Test-2";
 import Logout from "./components/Logout";
 import HomePage from "./components/view/Homepage";
-import HomepageAuth from './components/view/HomepageAuth'
+import HomepageAuth from "./components/view/HomepageAuth";
 import AuthNav from "./components/Nav/authNav";
 import PublicNav from "./components/Nav/publicNav";
 
-import LoginCon from './components/confirmation/LoginCon'
+import LoginCon from "./components/confirmation/LoginCon";
 import NotFound from "./components/notfound/NotFound";
 
 function App(props) {
@@ -32,6 +32,7 @@ function App(props) {
     axosWithAuth()
       .get("https://foodappapisql.herokuapp.com/auth/api")
       .then(users => {
+        console.log(users);
         setUser(users.data.data);
         setUserName(users.data.loggedInUser);
       })
@@ -44,7 +45,7 @@ function App(props) {
   }, []);
 
   console.log(username);
-  return (
+  return !user?<div>loading...</div> :(
     <div className="App">
       {/* <Route path='/'  render={(props)=> <UserList user={user} {...props}/>}/>
    <Route path='/:id' exact  render={(props)=> <User user={user} {...props}/>}/> */}
@@ -63,41 +64,50 @@ function App(props) {
           <Route path="/" component={PublicNav} />
           <Route exact path="/register" component={Register} />
           <Route path="/" exact component={HomePage} />
-        
-     
+
+          <Route exact  path="/login" component={Login} />
           <Switch>
             <Redirect from="/add_review" to="/notfound" />
             <Redirect from="/add_menu" to="/notfound" />
             <Redirect from="/add_other" to="/notfound" />
             <Redirect from="/edit/:id" to="/notfound" />
-              <Route exact path="/login" component={Login} />
+
             <Route exact path="/notfound" component={NotFound} />
           </Switch>
-        
+
           {/* <Redirect to="/"/> */}
         </div>
       ) : (
         <div>
-          <h1 style={{display: "flex",
-    justifyContent: "center",
-    alignItems: "flexEnd",
-    margin: "auto",
-    flexDirection: "row",
-    marginLeft: "79%"}}>
-            <i style={{fontSize: ".5em",color:"#3ee23e"}}class="user icon"></i>
+          <h1
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "flexEnd",
+              margin: "auto",
+              flexDirection: "row",
+              marginLeft: "79%"
+            }}
+          >
+            <i
+              style={{ fontSize: ".5em", color: "#3ee23e" }}
+              class="user icon"
+            ></i>
             <span style={{ color: "black", fontSize: ".8rem" }}>
               {username}
             </span>
-            <span style={{fontSize: ".9rem",marginLeft:"2px"}}> is logged in</span> 
+            <span style={{ fontSize: ".9rem", marginLeft: "2px" }}>
+              {" "}
+              is logged in
+            </span>
           </h1>
-
-          <Route path="/" component={AuthNav} />
-          <Route path="/" exact component={HomepageAuth} />
-          <Route
-            exact
+   <Route
             path="/test"
+            exact={true}
             render={props => <Test1 user={user} {...props} />}
           />
+          <Route path="/" component={AuthNav} />
+          <Route path="/" exact component={HomepageAuth} />
 
           <Route
             exact
@@ -127,9 +137,10 @@ function App(props) {
           <Route path="/add_other" exact component={Other_Add} />
 
           <Route path="/loginCon" exact component={LoginCon} />
-          <Switch>
-            <Redirect from="/login"  to="/loginCon"/>
-          </Switch>
+       
+          {/* <Switch>
+            <Redirect from="/test" to="/test" />
+          </Switch> */}
         </div>
       )}
 

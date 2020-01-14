@@ -6,7 +6,7 @@ class Other extends Component {
     wait_time: "",
     price: "",
      date_of_visit:'',
-    // menu_id: Number(localStorage.getItem("id"))
+    user_id: Number(localStorage.getItem("id"))
   };
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });

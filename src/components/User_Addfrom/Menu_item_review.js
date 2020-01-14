@@ -5,10 +5,9 @@ import Fade from "react-reveal/Fade";
 import Bounce from "react-reveal/Bounce";
 class Menu_item_review extends Component {
   state = {
-    restaurant_name: "",
-    restaurant_type: "",
+    restaurant_type:"",
+    restaurant_name:"",
     user_id: Number(localStorage.getItem("id"))
-    //  menu_id: Number(localStorage.getItem("id")),
     //   created_at: ""
   };
   handleChange = e => {
@@ -16,29 +15,38 @@ class Menu_item_review extends Component {
   };
 
   reviews = body => {
-    return axiosWithAuth()
+    axiosWithAuth()
       .post("https://foodappapisql.herokuapp.com/auth/api", body)
-      .then(res => console.log("res", res))
+      .then(res => console.log(` review created ${res.data}`))
       .catch(err => console.log(err.message));
   };
 
   handleSubmit = e => {
     e.preventDefault();
+    console.log(this.state, "state");
 
+    
     this.reviews(this.state);
-    this.props.history.push("/add_menu");
+     this.props.history.push("/add_menu");
   };
 
   render() {
     console.log(this.state.restaurant_type, "here");
     return (
-      <div style={{ display: "flex", flexDirection: "row" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center"
+        }}
+      >
         <form
           onSubmit={this.handleSubmit}
           style={{
             display: "flex",
             width: "40%",
-            marginTop: "15%",
+            marginTop: "5%",
             flexDirection: "column",
             alignItems: "center",
             lineHeight: "40px"
@@ -114,7 +122,7 @@ class Menu_item_review extends Component {
         <Bounce cascade delay={800} duration={2000}>
           <div style={{ width: "40%" }}>
             <img
-              style={{ width: "80%", borderRadius: "50%", marginTop: "25%" }}
+              style={{ width: "80%", borderRadius: "50%", marginTop: "15%" }}
               alt="food"
               src="http://www.transparentpng.com/thumb/food/AlL8lQ-hamburger-potato-chips-food-free-download.png"
             />

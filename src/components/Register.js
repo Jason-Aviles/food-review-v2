@@ -19,6 +19,8 @@ class Register extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.register(this.state);
+    if(this.state)
+    this.props.history.push('/login')
   };
 
   render() {
@@ -38,7 +40,7 @@ class Register extends Component {
           value={this.state.password}
           onChange={this.handleChange}
         ></input>
-        <button style={{background:'#E2B045' ,outline:'none',border:'none',padding:'5px 10px'}}>register</button>
+        <button style={{background:'#E2B045' ,outline:'none',border:'none',padding:'5px 10px',cursor:"pointer"}}>register</button>
       </form>
       
       <div  style={{width:"40%"}}>

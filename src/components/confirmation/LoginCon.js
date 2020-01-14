@@ -11,18 +11,20 @@ const LoginCon = props => {
           localStorage.getItem("id")
         )}`
       )
-      .then(users =>setState(users.data.data.review_id))
+      .then(users =>setState(users.data.data.id))
       .catch(err => console.log(err));
   };
   useEffect((props) => valData(), []);
  const num = Number(
-  localStorage.getItem("id"))
+  localStorage.getItem("secret"))
+ console.log(state,"here")
   return   (
+    
     <div>
       
-      <h2>Congratulations you are Signed In</h2>
+      <h2>Congratulations</h2>
       
-    {state !== num ? <h4>Verify account to begin adding reviews<Val/></h4> : <h4>Your account is verified you can now add reviews!!!</h4>  }
+    {num !== state ? <h4>Verify account to begin adding reviews<Val history={props.history}/></h4> : <h4>Your  review has been added!!!</h4>  }
     </div>
   );
 };

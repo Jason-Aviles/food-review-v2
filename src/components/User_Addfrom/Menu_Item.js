@@ -10,7 +10,7 @@ class Menu_Item extends Component {
     item_name: "",
     food_rating: 0,
     photo_of_order: "",
-    // review_id: Number(localStorage.getItem("id"))
+    user_id: Number(localStorage.getItem("id"))
   };
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -19,7 +19,7 @@ class Menu_Item extends Component {
   menu_item = body => {
     axiosWithAuth()
       .post("https://foodappapisql.herokuapp.com/auth/api/menu", body)
-      .then(res => console.log(res))
+      .then(res => console.log(` menu item created ${res}`))
       .catch(err => console.log(err));
   };
 
@@ -31,15 +31,17 @@ class Menu_Item extends Component {
   };
 
   render() {
-    return (<div   style={{ display: "flex", flexDirection: "row" }}>
+    return (<div   style={{marginLeft: "10%", display: "flex", flexDirection: "row" }}>
       <form onSubmit={this.handleSubmit}
       style={{
             display: "flex",
             width: "40%",
-            marginTop: "15%",
+            marginTop: "5%",
             flexDirection: "column",
             alignItems: "center",
             lineHeight: "40px",
+            justifyContent: "center",
+   
             
           }}
       >
@@ -92,7 +94,7 @@ class Menu_Item extends Component {
       <Bounce cascade delay={800} duration={2000}>
       <div style={{ width: "40%" }}>
           <img
-            style={{ width: "80%", borderRadius: "50%"  ,   marginTop: "25%"
+            style={{ width: "80%", borderRadius: "50%"  ,   marginTop: "15%"
  }}
             alt="food"
             src="https://clipartstation.com/wp-content/uploads/2018/09/fast-food-clipart-png-2.jpg"

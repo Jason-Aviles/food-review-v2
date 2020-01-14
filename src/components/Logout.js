@@ -6,7 +6,8 @@ const Logout = () => {
      <div>
     <div >
       <h1>You have logged out </h1>
-<Link onClick={()=>  { return setTimeout(function(){    window.location.reload()  }, 2000); }} to='/'>go back to the mainpage</Link>
+{/* <Link onClick={()=>  { return setTimeout(function(){    window.location.reload()  }, 2000); }} to='/'>go back to the mainpage</Link> */}
+<Link  to='/'>go back to the mainpage</Link>
 {}
     </div></div>
   );

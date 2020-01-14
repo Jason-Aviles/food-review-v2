@@ -5,8 +5,8 @@ class Menu_Item extends Component {
   state = {
     item_name: "",
     food_rating: 0,
-    photo_of_order: ""
-    //  review_id: Number(localStorage.getItem("id"))
+    photo_of_order: "",
+      user_id: Number(localStorage.getItem("id"))
   };
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });

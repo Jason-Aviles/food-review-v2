@@ -12,7 +12,7 @@ class Other extends Component {
     wait_time:0,
     price:'', date_of_visit:'',
 
-   // menu_id: Number(localStorage.getItem("id"))
+   user_id: Number(localStorage.getItem("id"))
   };
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -21,7 +21,7 @@ class Other extends Component {
   menu_item = body => {
     axiosWithAuth()
       .post("https://foodappapisql.herokuapp.com/auth/api/other", body)
-      .then(res => console.log(res))
+      .then(res => console.log(` others created ${res}`))
       .catch(err => console.log(err));
   };
 
@@ -29,21 +29,23 @@ class Other extends Component {
 e.preventDefault()
 
 this.menu_item(this.state)
-this.props.history.push('/test')
-setTimeout(function(){    window.location.reload()  }, 2100);
+this.props.history.push('/loginCon')
+//this.props.history.push('/test')
+// setTimeout(function(){    window.location.reload()  }, 2100);
   }
 
   render() {
     return (
-      <div style={{ display: "flex", flexDirection: "row" }}>
+      <div style={{marginLeft: "10%", display: "flex", flexDirection: "row" }}>
       <form onSubmit={this.handleSubmit}  style={{
             display: "flex",
             width: "40%",
-            marginTop: "15%",
+            marginTop: "5%",
             flexDirection: "column",
             alignItems: "center",
             lineHeight: "40px",
-            
+            justifyContent: "center",
+    alignItems: "center" 
           }}><Zoom right cascade delay={800}> <h1 style={{fontFamily:" 'Righteous', cursive",color:'#D86E20',fontSize:'2rem'}}>Adding New Review </h1></Zoom>
       <label>
        write your review: </label> <textarea
@@ -89,7 +91,7 @@ setTimeout(function(){    window.location.reload()  }, 2100);
       
       <div style={{ width: "40%" }}>
           <img
-            style={{ width: "80%", borderRadius: "50%"  ,   marginTop: "25%"
+            style={{ width: "80%", borderRadius: "50%"  ,   marginTop: "15%"
  }}
             alt="food"
             src="https://clipartstation.com/wp-content/uploads/2018/09/fast-food-clipart-png-2.jpg"

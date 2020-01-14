@@ -16,16 +16,19 @@ z
       .then(user => { localStorage.setItem('token', user.data.token);  localStorage.setItem('id', user.data.id)       })
       .catch(err => console.log(err));
   };
+
   handleSubmit = e => {
     e.preventDefault();
+    console.log(this.state)
     this.login(this.state);
-    // this.props.history.replace('/test')
-    // this.props.history.push('/test')
-     setTimeout(function(){    window.location.reload()  }, 2500);
-
+    
+    this.props.history.push({ pathname: '/test' });
+   
+    setTimeout(function(){    window.location.reload()  }, 2000);
   };
 
   render() {
+    console.log(this.props,"login")
     return (
       <div>
       {/* <Pub_nav/> */}

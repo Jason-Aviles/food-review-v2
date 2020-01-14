@@ -28,7 +28,7 @@ const Testtwo = props => {
   // const id = props.match !==  undefined && props.match.params.id ;
   // const singleUser = props.data.find(user => `${user.id}` === id )
   
-  return stateOther !== undefined&& (
+  return !state || !stateOther ?(<h1>Loading...</h1>): stateOther !== undefined&& (
     state !== undefined && (
 <div style={{marginTop:'10%'} }className='ui centered cards'>
 <div class="card">
