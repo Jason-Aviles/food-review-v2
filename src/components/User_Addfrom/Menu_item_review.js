@@ -3,10 +3,13 @@ import axiosWithAuth from "../common/axosWithAuth";
 import Zoom from "react-reveal/Zoom";
 import Fade from "react-reveal/Fade";
 import Bounce from "react-reveal/Bounce";
+
+import styled from "styled-components";
+
 class Menu_item_review extends Component {
   state = {
-    restaurant_type:"",
-    restaurant_name:"",
+    restaurant_type: "",
+    restaurant_name: "",
     user_id: Number(localStorage.getItem("id"))
     //   created_at: ""
   };
@@ -25,61 +28,88 @@ class Menu_item_review extends Component {
     e.preventDefault();
     console.log(this.state, "state");
 
-    
     this.reviews(this.state);
-     this.props.history.push("/add_menu");
+    this.props.history.push("/add_menu");
   };
 
   render() {
-    console.log(this.state.restaurant_type, "here");
+    const Container = styled.div`
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    `;
+
+    const Form = styled.form`
+      display: flex;
+      width: 40%;
+      margin-top: 5%;
+      flex-direction: column;
+      align-items: center;
+      line-height: 40px;
+    `;
+
+    const Title = styled.h1`
+      font-family: "Righteous", cursive;
+      color: #d86e20;
+      font-size: 2rem;
+    `;
+
+    const Input = styled.input`
+      margin-bottom: 10px;
+      padding: 5px 10px;
+      border: none;
+      border-bottom: solid black 1px;
+    `;
+
+    const Select = styled.select`
+      margin-bottom: 10px;
+      padding: 5px 10px;
+      border: none;
+      border-bottom: solid black 1px;
+    `;
+
+    const Button = styled.button`
+      background: #e2b045;
+      outline: none;
+      border: none;
+      padding: 5px 15px;
+      margin-top: 10px;
+    `;
+
+    const ImgContainer = styled.div`
+      width: 40%;
+    `;
+
+    const Img = styled.img`
+      width: 80%;
+      border-radius: 50%;
+      margin-top: 15%;
+    `;
+
     return (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-      >
-        <form
-          onSubmit={this.handleSubmit}
-          style={{
-            display: "flex",
-            width: "40%",
-            marginTop: "5%",
-            flexDirection: "column",
-            alignItems: "center",
-            lineHeight: "40px"
-          }}
-        >
+      <Container>
+        <Form onSubmit={this.handleSubmit}>
           {" "}
           <Zoom right cascade delay={800}>
-            <h1
-              style={{
-                fontFamily: " 'Righteous', cursive",
-                color: "#D86E20",
-                fontSize: "2rem"
-              }}
-            >
-              Adding New Review{" "}
-            </h1>
+            <Title>Adding New Review </Title>
           </Zoom>
           name:{" "}
-          <input
+          <Input
             name="restaurant_name"
-            value={this.state.restaurant_name}
+            value={
+              this.state.restaurant_name ? this.state.restaurant_name : "Blank"
+            }
             onChange={this.handleChange}
-            style={{
-              marginBottom: "10px",
-              padding: "5px 10px",
-              border: " none",
-              borderBottom: "solid black 1px"
-            }}
           />
           type:{" "}
-          <select
+          <Select
             name="restaurant_type"
-            value={this.state.restaurant_type}
+            value={
+              this.state.restaurant_type
+                ? this.state.restaurant_type
+                : "Select One"
+            }
             onChange={this.handleChange}
             style={{
               marginBottom: "10px",
@@ -88,7 +118,7 @@ class Menu_item_review extends Component {
               borderBottom: " solid 1px black"
             }}
           >
-            <option> Selected One</option>
+            <option> Select One</option>
             <option value=" Fine Dining"> Fine Dining</option>
             <option value=" Casual Dining"> Casual Dining</option>
             <option value=" Contemporary Casual"> Contemporary Casual</option>
@@ -103,32 +133,20 @@ class Menu_item_review extends Component {
             </option>
             <option value=" Pop-Up Restaurant"> Pop-Up Restaurant</option>
             <option value=" Ghost Restaurant"> Ghost Restaurant</option>
-          </select>
+          </Select>
           <Fade cascade delay={800} duration={4000}>
-            <button
-              className='plus icon"'
-              style={{
-                background: "#E2B045",
-                outline: "none",
-                border: "none",
-                padding: "5px 15px",
-                marginTop: "10px"
-              }}
-            >
-              next
-            </button>
+            <Button className='plus icon"'>next</Button>
           </Fade>
-        </form>
+        </Form>
         <Bounce cascade delay={800} duration={2000}>
-          <div style={{ width: "40%" }}>
-            <img
-              style={{ width: "80%", borderRadius: "50%", marginTop: "15%" }}
+          <ImgContainer>
+            <Img
               alt="food"
               src="http://www.transparentpng.com/thumb/food/AlL8lQ-hamburger-potato-chips-food-free-download.png"
             />
-          </div>
+          </ImgContainer>
         </Bounce>
-      </div>
+      </Container>
     );
   }
 }

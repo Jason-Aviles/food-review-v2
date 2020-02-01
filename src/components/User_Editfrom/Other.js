@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import axiosWithAuth from "../common/axosWithAuth";
+import moment from "moment";
 class Other extends Component {
   state = {
     comments: "",
     wait_time: "",
     price: "",
-     date_of_visit:'',
+    date_of_visit: "",
     user_id: Number(localStorage.getItem("id"))
   };
   handleChange = e => {
@@ -15,14 +16,18 @@ class Other extends Component {
   componentDidMount() {
     this.dataById();
   }
-
+  // componentDidUpdate(prevState){
+  // if(prevState !== this.state){
+  //   this.dataById();
+  // }
+  // }
   menu_item = body => {
     axiosWithAuth()
       .put(
         `https://foodappapisql.herokuapp.com/auth/api/other/${this.props.match.params.id}`,
         body
       )
-      .then(res => console.log(res))
+      .then(res =>  this.props.history.push(`/homepage`))
       .catch(err => console.log(err));
   };
 
@@ -50,86 +55,122 @@ class Other extends Component {
   };
 
   render() {
-    console.log(this.state.date_of_visit)
+    console.log(
+    this.state.date_of_visit,
+      
+      "datae nowww"
+    );
     return (
-      <div style={{ display: "flex", flexDirection: "row" ,
-     
-      alignItems: "center",
-      margin: "auto",    justifyContent: "center"}}>
-   
-      <form onSubmit={this.handleSubmit} style={{
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+
+          alignItems: "center",
+          margin: "auto",
+          justifyContent: "center"
+        }}
+      >
+        <form
+          onSubmit={this.handleSubmit}
+          style={{
             display: "flex",
             width: "40%",
             marginTop: "2%",
             flexDirection: "column",
             alignItems: "center",
-            lineHeight: "40px",
-            
-          }}>
-          <div  style={{display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "column"}}>
-      <label>
-      edit your review:</label>
-        <textarea
-          name="comments"
-          value={this.state.comments.charAt(0).toUpperCase() + this.state.comments.slice(1)}
-          onChange={this.handleChange}
-          style={{marginBottom:'10px',padding: "5px 10px",
-    border:" none",
-    borderBottom: "solid black 1px"}}
-        />
-       price: <input
-          name="price"
-          value={` ${this.state.price}`}
-          onChange={this.handleChange}
-          style={{marginBottom:'10px',padding: "5px 10px",
-    border:" none",
-    borderBottom: "solid black 1px"}}
-        /></div>
-        
-        
-        <div style={{display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "column"}}>
-      wait time:  <input
-          name="wait_time"
-          value={this.state.wait_time}
-          onChange={this.handleChange}
-          style={{marginBottom:'10px',padding: "5px 10px",
-    border:" none",
-    borderBottom: "solid black 1px"}}
-        />
-       date:  <input type='date'
-          name="date_of_visit"
-          value={this.state.date_of_visit}
-          onChange={this.handleChange}
-          style={{marginBottom:'10px',padding: "5px 10px",
-    border:" none",
-    borderBottom: "solid black 1px"}}
-        /></div>
-        <button className="save icon" style={{background:'#E2B045' ,outline:'none',border:'none',padding:'5px 15px',
-    marginTop: "10px"}}>save</button>
-      </form></div>
+            lineHeight: "40px"
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "column"
+            }}
+          >
+            <label>edit your review:</label>
+            <textarea
+              name="comments"
+              value={
+                this.state.comments &&
+                this.state.comments.charAt(0).toUpperCase() +
+                  this.state.comments.slice(1)
+              }
+              onChange={this.handleChange}
+              style={{
+                marginBottom: "10px",
+                padding: "5px 10px",
+                border: " none",
+                borderBottom: "solid black 1px"
+              }}
+            />
+            price:{" "}
+            <input
+              name="price"
+              value={` ${this.state.price}`}
+              onChange={this.handleChange}
+              style={{
+                marginBottom: "10px",
+                padding: "5px 10px",
+                border: " none",
+                borderBottom: "solid black 1px"
+              }}
+            />
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "column"
+            }}
+          >
+            wait time:{" "}
+            <input
+              name="wait_time"
+              value={this.state.wait_time}
+              onChange={this.handleChange}
+              style={{
+                marginBottom: "10px",
+                padding: "5px 10px",
+                border: " none",
+                borderBottom: "solid black 1px"
+              }}
+            />
+            {/* moment(this.state.date_of_visit ).utc().format('MM/DD/YYYY') */}
+            date:{" "}
+            <input
+              type="date"
+              name="date_of_visit"
+              value={this.state.date_of_visit}
+              onChange={this.handleChange}
+              style={{
+                marginBottom: "10px",
+                padding: "5px 10px",
+                border: " none",
+                borderBottom: "solid black 1px"
+              }}
+            />
+          </div>
+          <button
+            className="save icon"
+            style={{
+              background: "#E2B045",
+              outline: "none",
+              border: "none",
+              padding: "5px 15px",
+              marginTop: "10px"
+            }}
+          >
+            save
+          </button>
+        </form>
+      </div>
     );
   }
 }
 
 export default Other;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

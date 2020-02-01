@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import {R} from "react-router-dom"
+import loginPic from "./Img/loginPic.png";
 import axios from "./common/axios";
-import Pub_nav from './Nav/publicNav'
+import styled from "styled-components";
 
 class Login extends Component {
   state = { username: "", password: "" };
@@ -9,48 +9,101 @@ class Login extends Component {
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
-z
+
   login = user => {
     axios()
       .post("https://foodappapisql.herokuapp.com/auth/login", user)
-      .then(user => { localStorage.setItem('token', user.data.token);  localStorage.setItem('id', user.data.id)       })
+      .then(user => {
+        localStorage.setItem("username", user.data.message);
+
+        localStorage.setItem("token", user.data.token);
+        localStorage.setItem("id", user.data.id);
+        this.props.history.push("/homepage");
+      })
       .catch(err => console.log(err));
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state)
-    this.login(this.state);
-    
-    this.props.history.push({ pathname: '/test' });
-   
-    setTimeout(function(){    window.location.reload()  }, 2000);
+
+    try {
+      this.login(this.state);
+      this.props.history.push("/homepage");
+    } catch (error) {
+      console.log(error, "error #31");
+    }
+
+    // setTimeout(function(){    window.location.reload()  }, 2000);
   };
 
   render() {
-    console.log(this.props,"login")
+    const Container = styled.div`
+      display: flex;
+      flex-direction: row;
+    `;
+
+    const Form = styled.form`
+      display: flex;
+      width: 40%;
+      margin-top: 20%;
+      flex-direction: column;
+      align-items: center;
+    `;
+
+    const Title = styled.h1`
+      font-family: "Righteous", cursive;
+      color: #d86e20;
+      font-size: 2rem;
+    `;
+
+    const Input = styled.input`
+      margin-bottom: 10px;
+    `;
+
+    const Button = styled.button`
+      background: #e2b045;
+      outline: none;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    `;
+
+    const ImgContainer = styled.div`
+      width: 40%;
+    `;
+
+    const Img = styled.img`
+      width: 80%;
+      border-radius: 50%;
+      margin-top: 30%;
+    `;
+
     return (
       <div>
-      {/* <Pub_nav/> */}
-      <div style={{display:"flex", flexDirection:'row'}}>
-      <form onSubmit={this.handleSubmit} style={{display:"flex",width:"40%",marginTop:'20%',flexDirection:'column',alignItems:'center'}}>
-      <h1 style={{fontFamily:" 'Righteous', cursive",color:'#D86E20',fontSize:'2rem'}}>Login </h1>
-        <input style={{marginBottom:'10px'}}
-          name="username"
-          value={this.state.username}
-          onChange={this.handleChange}
-        ></input>
-        <input style={{marginBottom:'10px'}}
-          name="password"
-          value={this.state.password}
-          onChange={this.handleChange}
-        ></input>
-        <button style={{background:'#E2B045' ,outline:'none',border:'none',padding:'5px 10px',cursor:'pointer'}}>send</button>
-      </form>   <div  style={{width:"40%"}}>
+        <Container>
+          <Form onSubmit={this.handleSubmit}>
+            <Title>Login</Title>
 
-<img style={{width:"80%", borderRadius:'50%' ,marginTop:"30%"}} alt='food' src="https://img.pngio.com/unhealthy-food-for-kids-png-free-unhealthy-food-for-kidspng-unhealthy-food-png-980_600.png"/>
-</div>
-</div></div>
+            <Input
+              name="username"
+              value={this.state.username}
+              onChange={this.handleChange}
+            ></Input>
+
+            <Input
+              name="password"
+              value={this.state.password}
+              onChange={this.handleChange}
+            ></Input>
+
+            <Button>send</Button>
+          </Form>
+
+          <ImgContainer>
+            <Img alt="food" src={loginPic} />
+          </ImgContainer>
+        </Container>
+      </div>
     );
   }
 }

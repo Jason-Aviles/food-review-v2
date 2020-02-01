@@ -13,14 +13,14 @@ import axosWithAuth from "./components/common/axosWithAuth";
 import ReviewEdit from "./components/User_Editfrom/Menu_item_review";
 import ReviewMenuEdit from "./components/User_Editfrom/Menu_item";
 import ReviewOtherEdit from "./components/User_Editfrom/Other";
-import Test1 from "./components/test/Test-1";
-import Test2 from "./components/test/Test-2";
+import Test1 from "./components/test/CardList";
+import Test2 from "./components/test/Card";
 import Logout from "./components/Logout";
 import HomePage from "./components/view/Homepage";
 import HomepageAuth from "./components/view/HomepageAuth";
 import AuthNav from "./components/Nav/authNav";
 import PublicNav from "./components/Nav/publicNav";
-
+import PrivateRoute from './components/Private/PrivateRoute'
 import LoginCon from "./components/confirmation/LoginCon";
 import NotFound from "./components/notfound/NotFound";
 
@@ -44,8 +44,8 @@ function App(props) {
     data();
   }, []);
 
-  console.log(username);
-  return !user?<div>loading...</div> :(
+  console.log(user, "here");
+  return (
     <div className="App">
       {/* <Route path='/'  render={(props)=> <UserList user={user} {...props}/>}/>
    <Route path='/:id' exact  render={(props)=> <User user={user} {...props}/>}/> */}
@@ -65,7 +65,7 @@ function App(props) {
           <Route exact path="/register" component={Register} />
           <Route path="/" exact component={HomePage} />
 
-          <Route exact  path="/login" component={Login} />
+          <Route exact path="/login" component={Login} />
           <Switch>
             <Redirect from="/add_review" to="/notfound" />
             <Redirect from="/add_menu" to="/notfound" />
@@ -101,17 +101,26 @@ function App(props) {
               is logged in
             </span>
           </h1>
-   <Route
-            path="/test"
-            exact={true}
+          {/* <Route
+          exact
+            path="/homepage"
+            
             render={props => <Test1 user={user} {...props} />}
-          />
+          /> */}
+            
+          {/* <Route
+          exact
+            path="/homepage"
+            
+            render={props => <Test1 user={user} {...props} />}
+          /> */}
+ 
           <Route path="/" component={AuthNav} />
           <Route path="/" exact component={HomepageAuth} />
 
           <Route
             exact
-            path="/test/:id"
+            path="/homepage/:id"
             render={props => <Test2 {...props} />}
           />
 
@@ -122,13 +131,13 @@ function App(props) {
           />
           <Route
             exact
-            path="/edit/:id"
+            path="/edit/other/:id"
             render={props => <ReviewOtherEdit {...props} />}
           />
 
           <Route
             exact
-            path="/edit/:id"
+            path="/edit/menu/:id"
             render={props => <ReviewMenuEdit {...props} />}
           />
 
@@ -137,13 +146,13 @@ function App(props) {
           <Route path="/add_other" exact component={Other_Add} />
 
           <Route path="/loginCon" exact component={LoginCon} />
-       
+
           {/* <Switch>
             <Redirect from="/test" to="/test" />
           </Switch> */}
         </div>
       )}
-
+<PrivateRoute  path="/homepage" exact props={user} component={Test1}/>
       <Route path="/logout" exact component={Logout} />
 
       {/* <Route path='/add' exact  component={ADD}/> */}

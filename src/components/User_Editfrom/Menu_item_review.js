@@ -36,7 +36,7 @@ class Menu_item_review extends Component {
         `https://foodappapisql.herokuapp.com/auth/api/${this.props.match.params.id}`,
         body
       )
-      .then(res => console.log(res))
+      .then(res => this.props.history.push(`/edit/menu/${this.props.match.params.id }`))
       .catch(err => console.log(err));
   };
 
@@ -44,7 +44,7 @@ class Menu_item_review extends Component {
     e.preventDefault();
 
     this.reviews(this.state);
-    // this.props.history.push("/menu");
+    this.props.history.push(`/edit/menu/${this.props.match.params.id }`)
   };
 
   render() {

@@ -4,22 +4,22 @@ const PublicNav = () => {
   return (
    
     <div class="ui inverted vertical labeled icon ui overlay left thin visible sidebar menu">
-    <Link to='/'>   <a class="item">
+    <Link class="item" to='/'>  
              <i aria-hidden="true" class="home icon"></i>
              Home
-           </a></Link>
+          </Link>
  
   <div>
- <Link to='/register'>     <a class="item">
+ <Link to='/register'  class="item">     
              <i aria-hidden="true" class="hand paper outline icon
  "></i>
         Register 
-           </a></Link> 
-           <Link to='/login'>   <a class="item">
+           </Link> 
+           <Link to='/login' class="item">   
              <i aria-hidden="true" class="handshake outline icon
  "></i>
             Login 
-           </a></Link></div> 
+          </Link></div> 
  
          </div>
   );

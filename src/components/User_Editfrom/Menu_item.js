@@ -19,23 +19,23 @@ class Menu_Item extends Component {
   menu_item = body => {
     axiosWithAuth()
       .put(
-        `https://foodappapisql.herokuapp.com/auth/api/menu/${this.props.match.params.id}`,
+        `https://foodappapisql.herokuapp.com/photo-of-day/${this.props.match.params.id}`,
         body
       )
-      .then(res => console.log(res))
+      .then(res =>  this.props.history.push(`/edit/other/${this.props.match.params.id }`))
       .catch(err => console.log(err));
   };
 
   dataById = () => {
     axiosWithAuth()
       .get(
-        `https://foodappapisql.herokuapp.com/auth/api/menu/${this.props.match.params.id}`
+        `https://foodappapisql.herokuapp.com/photo-of-day/${this.props.match.params.id}`
       )
       .then(users =>
         this.setState({
-          item_name: users.data.data.item_name,
-          food_rating: users.data.data.food_rating,
-          photo_of_order: users.data.data.photo_of_order
+          item_name: users.data.item_name,
+          food_rating: users.data.food_rating,
+          photo_of_order: users.data.photo_of_order
         })
       )
       .catch(err => console.log(err));
