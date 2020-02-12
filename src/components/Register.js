@@ -60,8 +60,13 @@ register = async user => {
   render() {
     return (
       <div>
+      
         <Container>
-          <Form onSubmit={this.handleSubmit} data-testid="form">
+
+        
+          <Form onSubmit={this.handleSubmit} data-testid="form">{!this.state.username ||this.state.username=== " " ||   !this.state.email ||  this.state.email=== " " ||!this.state.password  ||  this.state.password === " " ?   <i class="exclamation triangle icon" style={{fontSize:".7rem",color: "#f22626",
+    position:" relative",    bottom: "-45px",
+    left: "85px"}}>required</i> : "" }
             <H1>Register</H1>
 
            username: <Input
@@ -89,17 +94,7 @@ register = async user => {
               value={this.state.password}
               onChange={this.handleChange}
             ></Input>
-       {!this.state.password && (
-              <h4
-                style={{
-                  background: "#d53f3fbd",
-                  width: "200px",
-                  padding: "5px 5px",margin:"0px",marginBottom:'10px'
-                }}
-              >
-               password field is empty
-              </h4>
-            )}
+    
             email:<Input
             placeholder='email'
               data-testid="email"
@@ -107,19 +102,13 @@ register = async user => {
               value={this.state.email}
               onChange={this.handleChange}
             ></Input>
-                   {!this.state.email && (
-              <h4
-                style={{
-                  background: "#d53f3fbd",
-                  width: "200px",
-                  padding: "5px 5px",margin:"0px",marginBottom:'10px'
-                }}
-              >
-               email field is empty
-              </h4>
-            )}
+          
             <Button data-testid="btn">signUp</Button>
-         { this.state.err &&  <h4  style={{background:'#d53f3fbd',width:'200px',padding:"5px 5px"}}>{this.state.err}</h4>}
+          
+         { this.state.err &&  <h4  style={{background:'rgba(213, 63, 63, 0.04)',width:'200px',padding:"5px 5px"}}>
+         
+         <i class="exclamation triangle icon" style={{fontSize:".9rem",color: "#f22626"}}>{this.state.error}</i>
+         </h4>}
           </Form>
 
           <ImgContainer>

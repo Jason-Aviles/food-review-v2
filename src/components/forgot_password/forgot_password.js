@@ -91,17 +91,10 @@ email:
 
             <Button>Reset</Button>
          
-            {this.state.error && (
-              <h4
-                style={{
-                  background: "#d53f3fbd",
-                  width: "200px",
-                  padding: "5px 5px"
-                }}
-              >
-                {this.state.error}
-              </h4>
-            )}
+            { this.state.error &&  <h4  style={{background:'rgba(213, 63, 63, 0.04)',width:'200px',padding:"5px 5px"}}>
+         
+         <i class="exclamation triangle icon" style={{fontSize:".9rem",color: "#f22626"}}>{this.state.error}</i>
+         </h4>}
           </Form>
         </Container>
       </div>

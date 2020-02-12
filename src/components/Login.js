@@ -80,6 +80,9 @@ class Login extends Component {
       <div>
         <Container>
           <Form onSubmit={this.handleSubmit}>
+          {!this.state.username ||this.state.username=== " " ||!this.state.password  ||  this.state.password === " " ?   <i class="exclamation triangle icon" style={{fontSize:".7rem",color: "#f22626",
+    position:" relative",    bottom: "-45px",
+    left: "85px"}}>required</i> : "" }
             <Title>Login</Title>
 
             username:<Input
@@ -118,18 +121,10 @@ class Login extends Component {
             )}
             <Button>send</Button>
             <Link style={{marginTop:"2%",fontSize:".7rem"}} to="/reset_password"><h5>forgot password</h5></Link>
-            {this.state.error && (
-              <h4
-                style={{
-
-                  background: "#d53f3fbd",
-                  width: "200px",
-                  padding: "5px 5px"
-                }}
-              >
-                {this.state.error}
-              </h4>
-            )}
+            { this.state.error &&  <h4  style={{background:'rgba(213, 63, 63, 0.04)',width:'200px',padding:"5px 5px"}}>
+         
+         <i class="exclamation triangle icon" style={{fontSize:".9rem",color: "#f22626"}}>{this.state.error}</i>
+         </h4>}
           </Form>
 
           <ImgContainer>
