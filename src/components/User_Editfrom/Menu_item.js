@@ -64,12 +64,14 @@ class Menu_Item extends Component {
         <Form onSubmit={this.handleSubmit}>
           name:{" "}
           <Input
+          placeholder='item name'
             name="item_name"
             value={this.state.item_name}
             onChange={this.handleChange}
           />
           picture:{" "}
           <Input
+
             name="photo_of_order"
             value={this.state.photo_of_order}
             onChange={this.handleChange}
@@ -79,7 +81,7 @@ class Menu_Item extends Component {
             name="food_rating"
             value={this.state.food_rating}
             onChange={this.handleChange}
-          >
+          > <option >Select One</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>

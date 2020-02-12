@@ -67,6 +67,7 @@ class Other extends Component {
           />
           wait time:{" "}
           <Input
+          placeholder="wait time"
             name="wait_time"
             value={this.state.wait_time ? this.state.wait_time : "blank"}
             onChange={this.handleChange}

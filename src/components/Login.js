@@ -61,7 +61,7 @@ class Login extends Component {
     };
     try {
       this.login(loginCreds);
-      // this.props.history.push("/homepage");
+     
     } catch (error) {
       console.log(error, "error #31");
     }
@@ -101,6 +101,7 @@ class Login extends Component {
             )}
             password:<Input
               name="password"
+              placeholder="password"
               value={this.state.password}
               onChange={this.handleChange}
             ></Input>
@@ -116,10 +117,11 @@ class Login extends Component {
               </h4>
             )}
             <Button>send</Button>
-            <Link to="/reset_password"><h5>forgot password</h5></Link>
+            <Link style={{marginTop:"2%",fontSize:".7rem"}} to="/reset_password"><h5>forgot password</h5></Link>
             {this.state.error && (
               <h4
                 style={{
+
                   background: "#d53f3fbd",
                   width: "200px",
                   padding: "5px 5px"

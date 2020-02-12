@@ -66,6 +66,7 @@ class Menu_item_review extends Component {
           <Title>EDIT Review </Title>
           title:{" "}
           <Input
+          placeholder="name"
             name="restaurant_name"
             value={this.state.restaurant_name}
             onChange={this.handleChange}
@@ -75,7 +76,7 @@ class Menu_item_review extends Component {
             name="restaurant_type"
             value={this.state.restaurant_type}
             onChange={this.handleChange}
-          >
+          ><option > Select One</option>
             <option value=" Fine Dining"> Fine Dining</option>
             <option value=" Casual Dining"> Casual Dining</option>
             <option value=" Contemporary Casual"> Contemporary Casual</option>

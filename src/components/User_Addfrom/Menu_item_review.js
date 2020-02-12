@@ -52,6 +52,7 @@ class Menu_item_review extends Component {
           name:{" "}
           <Input
             name="restaurant_name"
+            placeholder="restaurant name"
             value={
               this.state.restaurant_name ? this.state.restaurant_name : "Blank"
             }
@@ -59,6 +60,7 @@ class Menu_item_review extends Component {
           />
           type:{" "}
           <Select
+          placeholder="restaurant type"
             name="restaurant_type"
             value={
               this.state.restaurant_type

@@ -54,7 +54,7 @@ register = async user => {
       return
     }
     this.register(newReg);
-    // this.props.history.push("/login");
+    this.props.history.push("/login");
   };
 
   render() {
@@ -65,6 +65,7 @@ register = async user => {
             <H1>Register</H1>
 
            username: <Input
+           placeholder="username"
               data-testid="username"
               name="username"
               value={this.state.username}
@@ -82,6 +83,7 @@ register = async user => {
               </h4>
             )}
             password:<Input
+            placeholder="password"
               data-testid="password"
               name="password"
               value={this.state.password}
@@ -99,6 +101,7 @@ register = async user => {
               </h4>
             )}
             email:<Input
+            placeholder='email'
               data-testid="email"
               name="email"
               value={this.state.email}

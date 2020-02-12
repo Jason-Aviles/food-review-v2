@@ -75,6 +75,7 @@ class Other extends Component {
             <label>edit your review:</label>
             <TextArea
               name="comments"
+              placeholder="Write your review here"
               value={
                 this.state.comments &&
                 this.state.comments.charAt(0).toUpperCase() +
@@ -84,6 +85,7 @@ class Other extends Component {
             />
             price:{" "}
             <Input
+            placeholder="price"
               name="price"
               value={` ${this.state.price}`}
               onChange={this.handleChange}

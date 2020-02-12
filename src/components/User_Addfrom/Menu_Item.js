@@ -73,6 +73,7 @@ class Menu_Item extends Component {
           </Zoom>
           Product Name:{" "}
           <Input
+          placeholder="name"
             name="item_name"
             value={this.state.item_name ? this.state.item_name : "Blank"}
             onChange={this.handleChange}
