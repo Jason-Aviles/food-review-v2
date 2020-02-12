@@ -19,8 +19,10 @@ class Register extends Component {
     email: " ",
     err:''}
   
+componentDidMount(){
 
-register = async user => {
+
+  this.register = async user => {
     try {
       const res = await axios.post(
         "https://foodappapisql.herokuapp.com/auth/register",
@@ -30,11 +32,29 @@ register = async user => {
       if(res.data.message){
        return this.setState({err:res.data.message})
       }
+      this.props.history.push("/login");
      return res.data;
     } catch (err) {
       throw new Error(err);
     }
   };
+
+}
+// register = async user => {
+//     try {
+//       const res = await axios.post(
+//         "https://foodappapisql.herokuapp.com/auth/register",
+//         user
+//       );
+//       console.log(res,'res')
+//       if(res.data.message){
+//        return this.setState({err:res.data.message})
+//       }
+//      return res.data;
+//     } catch (err) {
+//       throw new Error(err);
+//     }
+//   };
   
 
   handleChange = e => {
@@ -54,7 +74,7 @@ register = async user => {
       return
     }
     this.register(newReg);
-    this.props.history.push("/login");
+   
   };
 
   render() {
