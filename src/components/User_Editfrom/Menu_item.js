@@ -1,12 +1,20 @@
 import React, { Component } from "react";
 
+import {
+  Button,
+  AddSelect as Select,
+  AddInput as Input,
+  Container,
+  AddForm as Form
+} from "../../styled-components/styled-components";
+
 import axiosWithAuth from "../common/axosWithAuth";
 class Menu_Item extends Component {
   state = {
     item_name: "",
     food_rating: 0,
     photo_of_order: "",
-      user_id: Number(localStorage.getItem("id"))
+    user_id: Number(localStorage.getItem("id"))
   };
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -22,7 +30,9 @@ class Menu_Item extends Component {
         `https://foodappapisql.herokuapp.com/photo-of-day/${this.props.match.params.id}`,
         body
       )
-      .then(res =>  this.props.history.push(`/edit/other/${this.props.match.params.id }`))
+      .then(res =>
+        this.props.history.push(`/edit/other/${this.props.match.params.id}`)
+      )
       .catch(err => console.log(err));
   };
 
@@ -49,83 +59,36 @@ class Menu_Item extends Component {
   };
 
   render() {
-    console.log(this.state);
     return (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-      >
-        <form
-          onSubmit={this.handleSubmit}
-          style={{
-            display: "flex",
-            width: "40%",
-            marginTop: "2%",
-            flexDirection: "column",
-            alignItems: "center",
-            lineHeight: "40px"
-          }}
-        >
+      <Container>
+        <Form onSubmit={this.handleSubmit}>
           name:{" "}
-          <input
+          <Input
             name="item_name"
             value={this.state.item_name}
             onChange={this.handleChange}
-            style={{
-              marginBottom: "10px",
-              padding: "5px 10px",
-              border: " none",
-              borderBottom: "solid black 1px"
-            }}
           />
           picture:{" "}
-          <input
+          <Input
             name="photo_of_order"
             value={this.state.photo_of_order}
             onChange={this.handleChange}
-            style={{
-              marginBottom: "10px",
-              padding: "5px 10px",
-              border: " none",
-              borderBottom: "solid black 1px"
-            }}
           />
           rating:{" "}
-          <select
+          <Select
             name="food_rating"
             value={this.state.food_rating}
             onChange={this.handleChange}
-            style={{
-              marginBottom: "10px",
-              padding: "5px 10px",
-              border: " none",
-              width: "30%",
-              borderBottom: "solid black 1px"
-            }}
           >
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
-          </select>
-          <button className="save icon"
-            style={{
-              background: "#E2B045",
-              outline: "none",
-              border: "none",
-              padding: "5px 15px",
-              marginTop: "10px"
-            }}
-          >
-            save
-          </button>
-        </form>
-      </div>
+          </Select>
+          <Button className="save icon">save</Button>
+        </Form>
+      </Container>
     );
   }
 }

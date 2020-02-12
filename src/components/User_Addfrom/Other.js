@@ -5,7 +5,16 @@ import Zoom from "react-reveal/Zoom";
 import Fade from "react-reveal/Fade";
 import Bounce from "react-reveal/Bounce";
 
-import styled from "styled-components";
+import {
+  TextArea,
+  Title,
+  AddForm as Form,
+  AddInput as Input,
+  Button,
+  Container,
+  Img,
+  ImgContainer
+} from "../../styled-components/styled-components";
 
 class Other extends Component {
   state = {
@@ -37,61 +46,6 @@ class Other extends Component {
   };
 
   render() {
-    const Container = styled.div`
-      margin-left: 10%;
-      display: flex;
-      flex-direction: row;
-    `;
-
-    const Form = styled.form`
-      display: flex;
-      width: 40%;
-      margin-top: 5%;
-      flex-direction: column;
-
-      line-height: 40px;
-      justify-content: center;
-      align-items: center;
-    `;
-
-    const Title = styled.h1`
-      font-family: "Righteous", cursive;
-      color: #d86e20;
-      font-size: 2rem;
-    `;
-
-    const TextArea = styled.textarea`
-      margin-bottom: 10px;
-      padding: 5px 10px;
-      border: none;
-      border-bottom: solid black 1px;
-      border-right: solid black;
-      border-left: solid black 1px;
-    `;
-
-    const Input = styled.input`
-      margin-bottom: 10px;
-      padding: 5px 10px;
-      border: none;
-      border-bottom: solid black 1px;
-    `;
-
-    const Button = styled.button`
-      background: #e2b045;
-      outline: none;
-      border: none;
-      padding: 5px 15px;
-      margin-top: 10px;
-    `;
-
-    const ImgContainer = styled.div`
-      width: 40%;
-    `;
-
-    const Img = styled.img`
-width: 80% border-radius: 50% margin-top: 15% 
-`;
-
     return (
       <Container>
         <Form onSubmit={this.handleSubmit}>

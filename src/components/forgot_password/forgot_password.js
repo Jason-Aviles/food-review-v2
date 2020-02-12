@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import loginPic from "./Img/loginPic.png";
-import { login } from "./apis/apis";
+
+
 import {
   Title,
   Img,
@@ -10,11 +10,11 @@ import {
   Button,
   Form,
   Container
-} from "../styled-components/styled-components";
+} from "../../styled-components/styled-components";
 import axios from "axios";
 import { relativeTimeThreshold } from "moment";
-class Login extends Component {
-  state = { username: "", password: "", error: "" };
+class ForgotPassword extends Component {
+  state = { username: "", email: "", error: "" };
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -25,25 +25,19 @@ class Login extends Component {
 
   async componentDidMount(){
     this.mounted = true;
-     this.login = async user => {
+     this.Resetlogin = async user => {
   const res=  await axios
-        .post("https://foodappapisql.herokuapp.com/auth/login", user)
-    if(res.data.message && this.mounted){
-    return  await this.setState((prevState)=> !prevState.error && this.setState({error:res.data.message}))}
-  try {
+        .put("https://foodappapisql.herokuapp.com/auth/reset", user)
+        console.log(res)
+  //   if(res.data.message && this.mounted){
+  //   return  await this.setState((prevState)=> !prevState.error && this.setState({error:res.data.message}))}
+  // try {
   
-  
-      
-  
-      localStorage.setItem("username", res.data.username);
-  
-          localStorage.setItem("token", res.data.token);
-          localStorage.setItem("id", res.data.id);
-
-    localStorage.getItem("username") !== undefined ?   this.props.history.push("/homepage"):this.props.history.push("/login")
-  } catch (error) {
-    console.log(error)
-  }}}
+  //   res.data.reset && this.props.history.push("/email_sent")
+  // } catch (error) {
+  //   console.log(error)
+  // }
+}}
 
 
 
@@ -52,12 +46,13 @@ class Login extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    let loginCreds = {
+    let Reset = {
       username: this.state.username,
-      password: this.state.password
+      email: this.state.email
     };
+    if(!Reset.email){return}
     try {
-      this.login(loginCreds);
+      this.Resetlogin(Reset.email,Reset);
       // this.props.history.push("/homepage");
     } catch (error) {
       console.log(error, "error #31");
@@ -77,22 +72,22 @@ class Login extends Component {
       <div>
         <Container>
           <Form onSubmit={this.handleSubmit}>
-            <Title>Login</Title>
-
+            <Title>Reset Password</Title>
+username:
             <Input
               name="username"
               value={this.state.username}
               onChange={this.handleChange}
             ></Input>
-
+email:
             <Input
-              name="password"
-              value={this.state.password}
+              name="email"
+              value={this.state.email}
               onChange={this.handleChange}
             ></Input>
 
-            <Button>send</Button>
-            <Link to="/reset_password"><h5>forgot password</h5></Link>
+            <Button>Reset</Button>
+         
             {this.state.error && (
               <h4
                 style={{
@@ -105,14 +100,10 @@ class Login extends Component {
               </h4>
             )}
           </Form>
-
-          <ImgContainer>
-            <Img alt="food" src={loginPic} />
-          </ImgContainer>
         </Container>
       </div>
     );
   }
 }
 
-export default Login;
+export default ForgotPassword;

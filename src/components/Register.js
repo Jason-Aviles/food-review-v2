@@ -1,84 +1,85 @@
 import React, { Component } from "react";
 import axios from "axios";
-import styled from "styled-components";
+import {
+  Container,
+  Form,
+  Title as H1,
+  Img,
+  ImgContainer,
+  Input,
+  Button
+} from "../styled-components/styled-components.js";
+import { register, handleChange } from "./apis/apis.js";
 
 class Register extends Component {
-  state = { username: "", password: "" };
+  state = 
+   
+ {username: "",
+    password: "",
+    email: "",
+    err:''}
+  
+
+register = async user => {
+    try {
+      const res = await axios.post(
+        "https://foodappapisql.herokuapp.com/auth/register",
+        user
+      );
+      console.log(res,'res')
+      if(res.data.message){
+       return this.setState({err:res.data.message})
+      }
+     return res.data;
+    } catch (err) {
+      throw new Error(err);
+    }
+  };
+  
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
-
-  register = user => {
-    axios
-      .post("https://foodappapisql.herokuapp.com/auth/register", user)
-      .then(data => console.log({ id: data.id }))
-      .catch(err => console.log(err));
-  };
   handleSubmit = e => {
     e.preventDefault();
-    this.register(this.state);
-    if (this.state) this.props.history.push("/login");
+    let newReg={
+      username:this.state.username,
+      email:this.state.email,
+      password:this.state.password
+    }
+    this.register(newReg);
+    // this.props.history.push("/login");
   };
 
   render() {
-    const Container = styled.div`
-      display: flex;
-      flex-direction: row;
-    `;
-
-    const Form = styled.form`
-      display: flex;
-      width: 40%;
-      margin-top: 20%;
-      flex-direction: column;
-      align-items: center;
-    `;
-
-    const H1 = styled.h1`
-      font-family: "Righteous", cursive;
-      color: #d86e20;
-      font-size: 2rem;
-    `;
-
-    const Input = styled.input`
-      margin-bottom: 10px;
-    `;
-    const Button = styled.button`
-      background: #e2b045;
-      outline: none;
-      border: none;
-      padding: 5px 10px;
-      cursor: pointer;
-    `;
-
-    const ImgContainer = styled.div`
-      width: 40%;
-    `;
-
-    const Img = styled.img`
-      width: 80%;
-      border-radius: 50%;
-      margin-top: 30%;
-    `;
-
     return (
       <div>
         <Container>
-          <Form onSubmit={this.handleSubmit}>
+          <Form onSubmit={this.handleSubmit} data-testid="form">
             <H1>Register</H1>
+
             <Input
+              data-testid="username"
               name="username"
               value={this.state.username}
               onChange={this.handleChange}
             ></Input>
+
             <Input
+              data-testid="password"
               name="password"
               value={this.state.password}
               onChange={this.handleChange}
             ></Input>
 
-            <Button>register</Button>
+            <Input
+              data-testid="email"
+              name="email"
+              value={this.state.email}
+              onChange={this.handleChange}
+            ></Input>
+            <Button data-testid="btn">signUp</Button>
+         { this.state.err &&  <h4  style={{background:'#d53f3fbd',width:'200px',padding:"5px 5px"}}>{this.state.err}</h4>}
           </Form>
 
           <ImgContainer>

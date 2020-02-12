@@ -4,7 +4,7 @@ import Zoom from "react-reveal/Zoom";
 import Fade from "react-reveal/Fade";
 import Bounce from "react-reveal/Bounce";
 
-import styled from "styled-components";
+import {Container,Button,ImgContainer,Img,AddForm as Form,AddSelect as Select, AddInput as Input,Title } from '../../styled-components/styled-components.js'
 
 class Menu_item_review extends Component {
   state = {
@@ -33,59 +33,14 @@ class Menu_item_review extends Component {
   };
 
   render() {
-    const Container = styled.div`
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-    `;
+ 
 
-    const Form = styled.form`
-      display: flex;
-      width: 40%;
-      margin-top: 5%;
-      flex-direction: column;
-      align-items: center;
-      line-height: 40px;
-    `;
+  
 
-    const Title = styled.h1`
-      font-family: "Righteous", cursive;
-      color: #d86e20;
-      font-size: 2rem;
-    `;
 
-    const Input = styled.input`
-      margin-bottom: 10px;
-      padding: 5px 10px;
-      border: none;
-      border-bottom: solid black 1px;
-    `;
+   
+ 
 
-    const Select = styled.select`
-      margin-bottom: 10px;
-      padding: 5px 10px;
-      border: none;
-      border-bottom: solid black 1px;
-    `;
-
-    const Button = styled.button`
-      background: #e2b045;
-      outline: none;
-      border: none;
-      padding: 5px 15px;
-      margin-top: 10px;
-    `;
-
-    const ImgContainer = styled.div`
-      width: 40%;
-    `;
-
-    const Img = styled.img`
-      width: 80%;
-      border-radius: 50%;
-      margin-top: 15%;
-    `;
 
     return (
       <Container>

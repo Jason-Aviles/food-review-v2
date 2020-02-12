@@ -3,32 +3,32 @@ import { Link } from "react-router-dom";
 import axosWithAuth from "../common/axosWithAuth";
 import Roll from "react-reveal/Roll";
 import Fade from "react-reveal/Fade";
+import {data} from '../apis/apis'
 const CardList = props => {
 
 
   const [username, setUserName] = useState();
   const [user, setUser] = useState();
 
-  const data = () => {
-    axosWithAuth()
-      .get("https://foodappapisql.herokuapp.com/auth/api")
-      .then(users => {
-        console.log(users);
-        setUser(users.data.data);
-        setUserName(users.data.loggedInUser);
-      })
-      .catch(err => console.log(err));
-  };
+  // const data = () => {
+  //   axosWithAuth()
+  //     .get("https://foodappapisql.herokuapp.com/auth/api")
+  //     .then(users => {
+  //       console.log(users);
+  //       setUser(users.data.data);
+  //       setUserName(users.data.loggedInUser);
+  //     })
+  //     .catch(err => console.log(err));
+  // };
 
-  const token = localStorage.getItem("token");
+  const id =Number( localStorage.getItem("id"));
   useEffect(() => {
-    data();
+    data(setUser,setUserName);
   }, []);
 
 
 
-
-
+const filteredUsers = user && user.filter(data => data.user_id ===id)
   return !user ? (
     <Fade>
       <h1>Loading...</h1>
@@ -59,7 +59,7 @@ const CardList = props => {
         </h1>
 
         {user.length !== 0 &&
-          user.map((x, i) => (
+          filteredUsers.map((x, i) => (
             <div class="ui segment" key={i}>
               <Fade bottom cascade delay={700} duration={1200}>
                 <div role="list" class="ui divided  relaxed list">

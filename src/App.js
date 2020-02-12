@@ -23,7 +23,7 @@ import PublicNav from "./components/Nav/publicNav";
 import PrivateRoute from './components/Private/PrivateRoute'
 import LoginCon from "./components/confirmation/LoginCon";
 import NotFound from "./components/notfound/NotFound";
-
+import ForgotPw from "./components/forgot_password/forgot_password"
 function App(props) {
   const [username, setUserName] = useState();
   const [user, setUser] = useState();
@@ -64,7 +64,7 @@ function App(props) {
           <Route path="/" component={PublicNav} />
           <Route exact path="/register" component={Register} />
           <Route path="/" exact component={HomePage} />
-
+          <Route exact path="/reset_password" component={ForgotPw} />
           <Route exact path="/login" component={Login} />
           <Switch>
             <Redirect from="/add_review" to="/notfound" />
@@ -94,7 +94,7 @@ function App(props) {
               class="user icon"
             ></i>
             <span style={{ color: "black", fontSize: ".8rem" }}>
-              {username}
+              {localStorage.getItem("username")}
             </span>
             <span style={{ fontSize: ".9rem", marginLeft: "2px" }}>
               {" "}

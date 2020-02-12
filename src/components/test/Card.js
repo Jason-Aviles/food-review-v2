@@ -49,7 +49,7 @@ const Card = props => {
   // const id = props.match !==  undefined && props.match.params.id ;
   // const singleUser = props.data.find(user => `${user.id}` === id )
   console.log(stateOther, "stateOther");
-  console.log(state, "state");
+  console.log(ids, "id");
   return (
     // <div style={{marginTop:'10%'} }className='ui centered cards'>
     // <div class="card">
@@ -79,18 +79,14 @@ const Card = props => {
 
     <div>
       {stateOther &&
-        stateOther.map(detial => (
-          <div style={{ marginTop: "10%" }} className="ui centered cards">
+        stateOther.map((detial ,i)=> (
+          <div key={i} style={{ marginTop: "10%" }} className="ui centered cards">
             <div class="card">
               <div class="image">
                 <img
                   alt="food"
                   src={
-                    detial.photo_of_order === "" ||
-                    !detial.photo_of_order ||
-                    detial.photo_of_order === undefined
-                      ? "https://p1.hiclipart.com/preview/471/910/508/krzp-dock-icons-v-1-2-empty-empty-text-png-clipart-thumbnail.jpg"
-                      : detial.photo_of_order
+                    detial.photo_of_order
                   }
                 />
               </div>
@@ -120,9 +116,9 @@ const Card = props => {
               <span>
                 <button
                   onClick={
-                    (() => deleteMenu(ids),
-                    deleteReviews(ids),
-                    deleteOther(ids))
+                  () => {   return deleteMenu(ids),
+                  deleteReviews(ids),
+                  deleteOther(ids)}
                   }
                 >
                   {" "}
