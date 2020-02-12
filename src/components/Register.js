@@ -15,7 +15,7 @@ class Register extends Component {
   state = 
    
  {username: " ",
-    password: " ",
+    password: "",
     email: " ",
     err:'',show:false}
   
@@ -91,7 +91,7 @@ componentDidMount(){
         <Container>
 
         
-          <Form onSubmit={this.handleSubmit} data-testid="form">{!this.state.username ||this.state.username=== " " ||   !this.state.email ||  this.state.email=== " " ||!this.state.password  ||  this.state.password === " " ?   <i class="exclamation triangle icon" style={{fontSize:".7rem",color: "#f22626",
+          <Form onSubmit={this.handleSubmit} data-testid="form">{!this.state.username ||this.state.username=== " " ||   !this.state.email ||  this.state.email=== " " ||!this.state.password  ||  this.state.password === "" ?   <i class="exclamation triangle icon" style={{fontSize:".7rem",color: "#f22626",
     position:" relative",    bottom: "-45px",
     left: "85px"}}>required</i> : "" }
             <H1>Register</H1>
