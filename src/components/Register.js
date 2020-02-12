@@ -14,9 +14,9 @@ import { register, handleChange } from "./apis/apis.js";
 class Register extends Component {
   state = 
    
- {username: "",
-    password: "",
-    email: "",
+ {username: " ",
+    password: " ",
+    email: " ",
     err:''}
   
 

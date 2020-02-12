@@ -14,7 +14,7 @@ import {
 import axios from "axios";
 import { relativeTimeThreshold } from "moment";
 class Login extends Component {
-  state = { username: "", password: "", error: "" };
+  state = { username: " ", password: " ", error: "" };
 
   handleChange = e => {
     if(!e.target.value){
