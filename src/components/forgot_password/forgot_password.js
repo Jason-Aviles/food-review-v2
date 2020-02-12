@@ -28,15 +28,18 @@ class ForgotPassword extends Component {
      this.Resetlogin = async user => {
   const res=  await axios
         .put("https://foodappapisql.herokuapp.com/auth/reset", user)
-        console.log(res)
-  //   if(res.data.message && this.mounted){
-  //   return  await this.setState((prevState)=> !prevState.error && this.setState({error:res.data.message}))}
-  // try {
+
+        
+
+      
+    if(res.data.message && this.mounted){
+    return  await this.setState((prevState)=> !prevState.error && this.setState({error:res.data.message}))}
+  try {
   
-  //   res.data.reset && this.props.history.push("/email_sent")
-  // } catch (error) {
-  //   console.log(error)
-  // }
+    res.data.reset && this.props.history.push("/email_sent")
+  } catch (error) {
+    console.log(error)
+  }
 }}
 
 
@@ -52,7 +55,7 @@ class ForgotPassword extends Component {
     };
     if(!Reset.email){return}
     try {
-      this.Resetlogin(Reset.email,Reset);
+      this.Resetlogin(Reset);
       // this.props.history.push("/homepage");
     } catch (error) {
       console.log(error, "error #31");

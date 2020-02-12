@@ -38,6 +38,9 @@ register = async user => {
   
 
   handleChange = e => {
+    if(!e.target.value){
+      this.setState({ [e.target.name]: "" });
+    }
     this.setState({ [e.target.name]: e.target.value });
   };
   handleSubmit = e => {
@@ -46,6 +49,9 @@ register = async user => {
       username:this.state.username,
       email:this.state.email,
       password:this.state.password
+    }
+    if(!newReg.username||!newReg.password ||!newReg.email){
+      return
     }
     this.register(newReg);
     // this.props.history.push("/login");
@@ -58,26 +64,57 @@ register = async user => {
           <Form onSubmit={this.handleSubmit} data-testid="form">
             <H1>Register</H1>
 
-            <Input
+           username: <Input
               data-testid="username"
               name="username"
               value={this.state.username}
               onChange={this.handleChange}
             ></Input>
-
-            <Input
+       {!this.state.username && (
+              <h4
+                style={{
+                  background: "#d53f3fbd",
+                  width: "200px",
+                  padding: "5px 5px",margin:"0px",marginBottom:'10px'
+                }}
+              >
+               username field is empty
+              </h4>
+            )}
+            password:<Input
               data-testid="password"
               name="password"
               value={this.state.password}
               onChange={this.handleChange}
             ></Input>
-
-            <Input
+       {!this.state.password && (
+              <h4
+                style={{
+                  background: "#d53f3fbd",
+                  width: "200px",
+                  padding: "5px 5px",margin:"0px",marginBottom:'10px'
+                }}
+              >
+               password field is empty
+              </h4>
+            )}
+            email:<Input
               data-testid="email"
               name="email"
               value={this.state.email}
               onChange={this.handleChange}
             ></Input>
+                   {!this.state.email && (
+              <h4
+                style={{
+                  background: "#d53f3fbd",
+                  width: "200px",
+                  padding: "5px 5px",margin:"0px",marginBottom:'10px'
+                }}
+              >
+               email field is empty
+              </h4>
+            )}
             <Button data-testid="btn">signUp</Button>
          { this.state.err &&  <h4  style={{background:'#d53f3fbd',width:'200px',padding:"5px 5px"}}>{this.state.err}</h4>}
           </Form>

@@ -24,6 +24,7 @@ import PrivateRoute from './components/Private/PrivateRoute'
 import LoginCon from "./components/confirmation/LoginCon";
 import NotFound from "./components/notfound/NotFound";
 import ForgotPw from "./components/forgot_password/forgot_password"
+import Email from "./components/confirmation/Email_sent"
 function App(props) {
   const [username, setUserName] = useState();
   const [user, setUser] = useState();
@@ -65,6 +66,7 @@ function App(props) {
           <Route exact path="/register" component={Register} />
           <Route path="/" exact component={HomePage} />
           <Route exact path="/reset_password" component={ForgotPw} />
+          <Route exact path="/email_sent" component={Email} />
           <Route exact path="/login" component={Login} />
           <Switch>
             <Redirect from="/add_review" to="/notfound" />

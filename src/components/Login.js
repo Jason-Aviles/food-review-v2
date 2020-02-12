@@ -17,6 +17,9 @@ class Login extends Component {
   state = { username: "", password: "", error: "" };
 
   handleChange = e => {
+    if(!e.target.value){
+      this.setState({ [e.target.name]: "" });
+    }
     this.setState({ [e.target.name]: e.target.value });
   };
 
@@ -79,18 +82,39 @@ class Login extends Component {
           <Form onSubmit={this.handleSubmit}>
             <Title>Login</Title>
 
-            <Input
+            username:<Input
               name="username"
+              placeholder='username'
               value={this.state.username}
               onChange={this.handleChange}
             ></Input>
-
-            <Input
+             {!this.state.username && (
+              <h4
+                style={{
+                  background: "#d53f3fbd",
+                  width: "200px",
+                  padding: "5px 5px",margin:"0px",marginBottom:'10px'
+                }}
+              >
+               username field is empty
+              </h4>
+            )}
+            password:<Input
               name="password"
               value={this.state.password}
               onChange={this.handleChange}
             ></Input>
-
+ {!this.state.password && (
+              <h4
+                style={{
+                  background: "#d53f3fbd",
+                  width: "200px",
+                  padding: "5px 5px",margin:"0px",marginBottom:'10px'
+                }}
+              >
+               username field is empty
+              </h4>
+            )}
             <Button>send</Button>
             <Link to="/reset_password"><h5>forgot password</h5></Link>
             {this.state.error && (
