@@ -17,7 +17,7 @@ class Register extends Component {
  {username: " ",
     password: " ",
     email: " ",
-    err:''}
+    err:'',show:false}
   
 componentDidMount(){
 
@@ -78,6 +78,13 @@ componentDidMount(){
   };
 
   render() {
+
+    const flickShow =  () => {
+      return this.setState(
+  {
+          show: !this.state.show}
+      );
+    };
     return (
       <div>
       
@@ -122,7 +129,38 @@ componentDidMount(){
               value={this.state.email}
               onChange={this.handleChange}
             ></Input>
-          
+           {!this.state.show ? (
+              <Input
+                type="password"
+                name="password"
+                placeholder="password"
+                value={this.state.password}
+                onChange={this.handleChange}
+              />
+            ) : (
+              <Input
+                name="password"
+                type="text"
+                placeholder="password"
+                value={this.state.password}
+                onChange={this.handleChange}
+              />
+            )}
+            <span
+              onClick={() => {flickShow()}}
+              style={{
+                background: "#b6b2b2",
+                position: " relative",
+                bottom: "32px",
+                left: "57px",
+                padding: " 1px 3px",
+                zIndex: 1,
+                cursor: "pointer",
+                border: ".6px solid darkgray"
+              }}
+            >
+              show
+            </span>
             <Button data-testid="btn">signUp</Button>
           
          { this.state.err &&  <h4  style={{background:'rgba(213, 63, 63, 0.04)',width:'200px',padding:"5px 5px"}}>
