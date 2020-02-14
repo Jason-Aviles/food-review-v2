@@ -133,7 +133,7 @@ class Register extends Component {
                 background: "#b6b2b2",
                 position: " relative",
                 bottom: "32px",
-                left: "74px",
+                left: "55px",
                 padding: " 0px 3px",
                 zIndex: 1,
                 cursor: "pointer",
