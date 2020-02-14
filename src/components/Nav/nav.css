@@ -10,16 +10,3 @@
   top:0px */
   display: flex;
 }
-
-
-
-@media all and(min-width:768px ){
-
-  .menuON{
-/* position: relative;
-top:250px */
-
-display: flex !important;
-}
-
-}
