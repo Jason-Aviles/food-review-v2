@@ -23,7 +23,7 @@ class Login extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  async componentDidMount() {
+  async componentDidUpdate() {
     this.mounted = true;
 
     this.login = async user => {
@@ -80,7 +80,7 @@ class Login extends Component {
         show: !this.state.show}
     );
   };
-    console.log(this.state.show, "kkkkk");
+    console.log(this.state, "kkkkk");
     return (
       <div>
         <Container>
@@ -149,8 +149,8 @@ class Login extends Component {
                 background: "#b6b2b2",
                 position: " relative",
                 bottom: "32px",
-                left: "57px",
-                padding: " 1px 3px",
+                left: "74px",
+                padding: " 0px 3px",
                 zIndex: 1,
                 cursor: "pointer",
                 border: ".6px solid darkgray"

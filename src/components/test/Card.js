@@ -6,10 +6,10 @@ const Card = props => {
   const [state, setState] = useState();
   const [stateOther, setOther] = useState();
   const ids = props.match.params.id;
-
+const item =  props.match.params.user_id;
   const fetchAllinfo = async id => {
     await axosWithAuth()
-      .get(`https://foodappapisql.herokuapp.com/photo-of-day/${id}`)
+      .get(`https://foodappapisql.herokuapp.com/photo-of-day/${id}/${item}`)
       .then(user => setState(user.data))
       .catch(err => console.log(err));
   };
@@ -37,8 +37,8 @@ const Card = props => {
 
   const fetchAllother = async id => {
     await axosWithAuth()
-      .get(`https://foodappapisql.herokuapp.com/auth/api/foodie/${id}`)
-      .then(user => setOther([user.data.data]))
+      .get(`https://foodappapisql.herokuapp.com/auth/api/foodie/${item}/${id}`)
+      .then(user =>setOther(user))
       .catch(err => console.log(err));
   };
 
@@ -49,7 +49,7 @@ const Card = props => {
   // const id = props.match !==  undefined && props.match.params.id ;
   // const singleUser = props.data.find(user => `${user.id}` === id )
   console.log(stateOther, "stateOther");
-  console.log(ids, "id");
+  console.log(item, "item");
   return (
     // <div style={{marginTop:'10%'} }className='ui centered cards'>
     // <div class="card">

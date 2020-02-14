@@ -4,7 +4,16 @@ import Zoom from "react-reveal/Zoom";
 import Fade from "react-reveal/Fade";
 import Bounce from "react-reveal/Bounce";
 
-import {Container,Button,ImgContainer,Img,AddForm as Form,AddSelect as Select, AddInput as Input,Title } from '../../styled-components/styled-components.js'
+import {
+  Container,
+  Button,
+  ImgContainer,
+  Img,
+  AddForm as Form,
+  AddSelect as Select,
+  AddInput as Input,
+  Title
+} from "../../styled-components/styled-components.js";
 
 class Menu_item_review extends Component {
   state = {
@@ -33,15 +42,6 @@ class Menu_item_review extends Component {
   };
 
   render() {
- 
-
-  
-
-
-   
- 
-
-
     return (
       <Container>
         <Form onSubmit={this.handleSubmit}>
@@ -52,15 +52,13 @@ class Menu_item_review extends Component {
           name:{" "}
           <Input
             name="restaurant_name"
-            placeholder="restaurant name"
             value={
-              this.state.restaurant_name ? this.state.restaurant_name : "Blank"
+              this.state.restaurant_name 
             }
             onChange={this.handleChange}
           />
           type:{" "}
           <Select
-          placeholder="restaurant type"
             name="restaurant_type"
             value={
               this.state.restaurant_type

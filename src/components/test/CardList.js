@@ -66,7 +66,7 @@ const filteredUsers = user && user.filter(data => data.user_id ===id)
                   <div role="listitem" class="item">
                     <div className="content">
                       restaurant-name:{" "}
-                      <Link className="header" to={`/homepage/${x.id}`}>
+                      <Link className="header" to={`/homepage/${x.id}/${x.user_id}`}>
                         <h1 style={{ color: "orange" }}>
                           {" "}
                           {x.restaurant_name}

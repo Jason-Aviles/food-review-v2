@@ -122,7 +122,7 @@ function App(props) {
 
           <Route
             exact
-            path="/homepage/:id"
+            path="/homepage/:id/:user_id"
             render={props => <Test2 {...props} />}
           />
 

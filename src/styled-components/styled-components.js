@@ -24,7 +24,7 @@ margin-bottom: 10px;
 export const Form = styled.form`
 display: flex;
 width: 40%;
-margin-top: 20%;
+
 flex-direction: column;
 align-items: center;
 `;
@@ -73,7 +73,7 @@ background: #e2b045;
 outline: none;
 border: none;
 padding: 5px 10px;
-cursor: pointer;
+
 `;
 
 export const ImgContainer = styled.div`
@@ -83,7 +83,7 @@ width: 40%;
 export const Img = styled.img`
 width: 80%;
 border-radius: 50%;
-margin-top: 15%;
+
 `;
 export const Title = styled.h1`
 font-family: "Righteous", cursive;

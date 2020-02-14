@@ -1,5 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+// width: 53px;
+// display: flex;
+// flex-direction: column;
+// align-items: center;
+// align-content: center;
+// justify-content: center;
+// margin: auto;
 const AuthNav = props => {
   return (
     <div class="ui inverted vertical labeled icon ui overlay left thin visible sidebar menu">

@@ -133,8 +133,8 @@ class Register extends Component {
                 background: "#b6b2b2",
                 position: " relative",
                 bottom: "32px",
-                left: "57px",
-                padding: " 1px 3px",
+                left: "74px",
+                padding: " 0px 3px",
                 zIndex: 1,
                 cursor: "pointer",
                 border: ".6px solid darkgray"
@@ -171,7 +171,7 @@ class Register extends Component {
 
           <ImgContainer>
             <Img
-              style={{ width: "80%", borderRadius: "50%", marginTop: "30%" }}
+              style={{ width: "80%", borderRadius: "50%" }}
               alt="food"
               src="https://making-the-web.com/sites/default/files/clipart/171373/food-png-transparent-images-171373-2839659.png"
             />
