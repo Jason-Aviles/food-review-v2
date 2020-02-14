@@ -12,7 +12,7 @@ import {
 import { register, handleChange } from "./apis/apis.js";
 
 class Register extends Component {
-  state = { username: " ", password: "", email: " ", err: "", show: false };
+  state = { username: "", password: "", email: "", err: "", show: false };
 
   componentDidMount() {
     this.register = async user => {
@@ -78,9 +78,9 @@ class Register extends Component {
         <Container>
           <Form onSubmit={this.handleSubmit} data-testid="form">
             {!this.state.username ||
-            this.state.username === " " ||
+            this.state.username === "" ||
             !this.state.email ||
-            this.state.email === " " ||
+            this.state.email === "" ||
             !this.state.password ||
             this.state.password === "" ? (
               <i

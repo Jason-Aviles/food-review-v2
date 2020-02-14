@@ -14,7 +14,7 @@ import {
 import axios from "axios";
 import { relativeTimeThreshold } from "moment";
 class Login extends Component {
-  state = { username: " ", password: "", error: "", show: false };
+  state = { username: "", password: "", error: "", show: false };
 
   handleChange = e => {
     if (!e.target.value) {
@@ -86,7 +86,7 @@ class Login extends Component {
         <Container>
           <Form onSubmit={this.handleSubmit}>
             {!this.state.username ||
-            this.state.username === " " ||
+            this.state.username === "" ||
             !this.state.password ||
             this.state.password === "" ? (
               <i
